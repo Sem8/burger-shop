@@ -35,6 +35,16 @@ const useStyles = makeStyles({
   marginRight: {
     marginRight: 10,
   },
+  names: {
+    color: "#008BC9",
+    padding: 5,
+    fontSize: 20,
+  },
+  days: {
+    color: "#008BC9",
+    padding: 5,
+    fontSize: 30,
+  },
 });
 
 const HomePage = () => {
@@ -59,6 +69,66 @@ const HomePage = () => {
     console.log("User data: ", userData.data);
     setUserData(userData.data);
   };
+  let monday = [];
+  let tuesday = [];
+  let wednesday = [];
+  let thursday = [];
+  let friday = [];
+  let saturday = [];
+  let sunday = [];
+
+  scheduleData.map((eachSchedule) => {
+    userData.map((eachUser) => {
+      if (
+        eachUser.id === eachSchedule.userId &&
+        eachSchedule.workDays.includes("monday")
+      ) {
+        monday.push(eachUser.name);
+      }
+
+      if (
+        eachUser.id === eachSchedule.userId &&
+        eachSchedule.workDays.includes("tuesday")
+      ) {
+        tuesday.push(eachUser.name);
+      }
+
+      if (
+        eachUser.id === eachSchedule.userId &&
+        eachSchedule.workDays.includes("wednesday")
+      ) {
+        wednesday.push(eachUser.name);
+      }
+
+      if (
+        eachUser.id === eachSchedule.userId &&
+        eachSchedule.workDays.includes("thursday")
+      ) {
+        thursday.push(eachUser.name);
+      }
+
+      if (
+        eachUser.id === eachSchedule.userId &&
+        eachSchedule.workDays.includes("friday")
+      ) {
+        friday.push(eachUser.name);
+      }
+
+      if (
+        eachUser.id === eachSchedule.userId &&
+        eachSchedule.workDays.includes("saturday")
+      ) {
+        saturday.push(eachUser.name);
+      }
+
+      if (
+        eachUser.id === eachSchedule.userId &&
+        eachSchedule.workDays.includes("sunday")
+      ) {
+        sunday.push(eachUser.name);
+      }
+    });
+  });
 
   return (
     <>
@@ -71,27 +141,97 @@ const HomePage = () => {
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="center">Monday</TableCell>
-              <TableCell align="center">Tuesday</TableCell>
-              <TableCell align="center">Wednesday</TableCell>
-              <TableCell align="center">Thursday</TableCell>
-              <TableCell align="center">Friday</TableCell>
-              <TableCell align="center">Saturday</TableCell>
-              <TableCell align="center">Sunday</TableCell>
+              <TableCell align="center" className={classes.days}>
+                Monday
+              </TableCell>
+              <TableCell align="center" className={classes.days}>
+                Tuesday
+              </TableCell>
+              <TableCell align="center" className={classes.days}>
+                Wednesday
+              </TableCell>
+              <TableCell align="center" className={classes.days}>
+                Thursday
+              </TableCell>
+              <TableCell align="center" className={classes.days}>
+                Friday
+              </TableCell>
+              <TableCell align="center" className={classes.days}>
+                Saturday
+              </TableCell>
+              <TableCell align="center" className={classes.days}>
+                Sunday
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-          
-            {scheduleData.map((eachSchedule) =>
+            <TableRow>
+              <TableCell align="center">
+                {monday.map((eachMonName) => (
+                  <Typography className={classes.names}>
+                    {eachMonName}
+                  </Typography>
+                ))}
+              </TableCell>
+
+              <TableCell align="center">
+                {tuesday.map((eachTuesName) => (
+                  <Typography className={classes.names}>
+                    {eachTuesName}
+                  </Typography>
+                ))}
+              </TableCell>
+
+              <TableCell align="center">
+                {wednesday.map((eachWedName) => (
+                  <Typography className={classes.names}>
+                    {eachWedName}
+                  </Typography>
+                ))}
+              </TableCell>
+
+              <TableCell align="center">
+                {thursday.map((eachThursName) => (
+                  <Typography className={classes.names}>
+                    {eachThursName}
+                  </Typography>
+                ))}
+              </TableCell>
+
+              <TableCell align="center">
+                {friday.map((eachFriName) => (
+                  <Typography className={classes.names}>
+                    {eachFriName}
+                  </Typography>
+                ))}
+              </TableCell>
+
+              <TableCell align="center">
+                {saturday.map((eachSatName) => (
+                  <Typography className={classes.names}>
+                    {eachSatName}
+                  </Typography>
+                ))}
+              </TableCell>
+
+              <TableCell align="center">
+                {sunday.map((eachSunName) => (
+                  <Typography className={classes.names}>
+                    {eachSunName}
+                  </Typography>
+                ))}
+              </TableCell>
+            </TableRow>
+
+            {/* {scheduleData.map((eachSchedule) =>
               userData.map((eachUser) => (
                 // return (
                 //   <div>
                 //     <EmployeeSchedule eachUser={eachUser} />
                 //   </div>
                 // );
-                <> 
-                <TableRow>         
-                  
+                <>
+                  <TableRow>
                     <TableCell align="center">
                       {eachUser.id === eachSchedule.userId &&
                       eachSchedule.workDays.includes("monday") ? (
@@ -140,12 +280,10 @@ const HomePage = () => {
                         <div>{eachUser.name}</div>
                       ) : null}
                     </TableCell>
-
-                    </TableRow>
-                    </>               
+                  </TableRow>
+                </>
               ))
-            )}
-            
+            )} */}
           </TableBody>
         </Table>
       </TableContainer>
@@ -154,42 +292,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-//               userData.map((eachUser) => (
-//                   <>
-//                   Monday: {eachUser.id === eachSchedule.userId &&
-//                     eachSchedule.workDays.includes("monday") ? (
-//                         <div>{eachUser.name}</div>
-//                     ) : (
-//                       <div></div>
-//                     )}
-
-// <div> Tuesday: {eachUser.id === eachSchedule.userId &&
-//                     eachSchedule.workDays.includes("tuesday") ? (
-//                       eachUser.name
-//                     ) : (
-//                       <div></div>
-//                     )}</div>
-//                   </>
-//                 // <TableRow key={eachUser.id}>
-//                 //   <TableCell component="th" scope="row">
-//                 //     {eachUser.id === eachSchedule.userId &&
-//                 //     eachSchedule.workDays.includes("monday") ? (
-//                 //       eachUser.name
-//                 //     ) : (
-//                 //       <div></div>
-//                 //     )}
-//                 //   </TableCell>
-//                 //   <TableCell align="right">{eachUser.email}</TableCell>
-//                 //   <TableCell align="right">{eachUser.phone}</TableCell>
-//                 //   <TableCell align="right">{eachUser.address}</TableCell>
-//                 //   <TableCell align="right">{eachUser.description}</TableCell>
-//                 //   <TableCell align="right">
-//                 //     {/* <Link to={`edit/${eachSchedule.id}`}> <EditIcon className={classes.marginRight} /> </Link>
-//                 //                    <DeleteIcon onClick={e => deleteCustomer(e, customer.id)} />  */}
-//                 //   </TableCell>
-//                 // </TableRow>
-//               ))
-
-// }
-//   </TableBody>
