@@ -36,14 +36,19 @@ const useStyles = makeStyles({
     marginRight: 10,
   },
   names: {
-    color: "#008BC9",
-    padding: 5,
+    color: "white",
+    padding: 10,
+    margin: 10,
     fontSize: 20,
+    border: '1px solid blue',
+    borderRadius: '50%',
+    backgroundColor: '#008BC9'
   },
   days: {
     color: "#008BC9",
-    padding: 5,
+    padding: 10,
     fontSize: 30,
+    fontWeight: 'bold',
   },
 });
 
