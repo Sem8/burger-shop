@@ -27,6 +27,7 @@ import Card from "@material-ui/core/Card";
 import axios from "axios";
 
 import BurgerOfDay from "./BurgerOfDay";
+import GetBurgerSchedule from './GetBurgerSchedule';
 
 const useStyles = makeStyles({
   table: {
@@ -65,13 +66,13 @@ const HomePage = () => {
 
   const getScheduleData = async () => {
     let scheduleData = await axios.get(`http://localhost:3001/schedule`);
-    console.log("schedule data: ", scheduleData.data);
+    // console.log("schedule data: ", scheduleData.data);
     setScheduleData(scheduleData.data);
   };
 
   const getUserData = async () => {
     let userData = await axios.get(`http://localhost:3001/users`);
-    console.log("User data: ", userData.data);
+    // console.log("User data: ", userData.data);
     setUserData(userData.data);
   };
   let monday = [];
@@ -173,7 +174,7 @@ const HomePage = () => {
             <TableRow>
               <TableCell align="center">
                 {monday.map((eachMonName) => (
-                  <Typography className={classes.names}>
+                  <Typography key={Math.random() * 100000} className={classes.names}>
                     {eachMonName}
                   </Typography>
                 ))}
@@ -181,7 +182,7 @@ const HomePage = () => {
 
               <TableCell align="center">
                 {tuesday.map((eachTuesName) => (
-                  <Typography className={classes.names}>
+                  <Typography key={Math.random() * 100000} className={classes.names}>
                     {eachTuesName}
                   </Typography>
                 ))}
@@ -189,7 +190,7 @@ const HomePage = () => {
 
               <TableCell align="center">
                 {wednesday.map((eachWedName) => (
-                  <Typography className={classes.names}>
+                  <Typography key={Math.random() * 100000} className={classes.names}>
                     {eachWedName}
                   </Typography>
                 ))}
@@ -197,7 +198,7 @@ const HomePage = () => {
 
               <TableCell align="center">
                 {thursday.map((eachThursName) => (
-                  <Typography className={classes.names}>
+                  <Typography key={Math.random() * 100000} className={classes.names}>
                     {eachThursName}
                   </Typography>
                 ))}
@@ -205,7 +206,7 @@ const HomePage = () => {
 
               <TableCell align="center">
                 {friday.map((eachFriName) => (
-                  <Typography className={classes.names}>
+                  <Typography key={Math.random() * 100000} className={classes.names}>
                     {eachFriName}
                   </Typography>
                 ))}
@@ -213,7 +214,7 @@ const HomePage = () => {
 
               <TableCell align="center">
                 {saturday.map((eachSatName) => (
-                  <Typography className={classes.names}>
+                  <Typography key={Math.random() * 100000} className={classes.names}>
                     {eachSatName}
                   </Typography>
                 ))}
@@ -221,7 +222,7 @@ const HomePage = () => {
 
               <TableCell align="center">
                 {sunday.map((eachSunName) => (
-                  <Typography className={classes.names}>
+                  <Typography key={Math.random() * 100000} className={classes.names}>
                     {eachSunName}
                   </Typography>
                 ))}
@@ -292,6 +293,8 @@ const HomePage = () => {
           </TableBody>
         </Table>
       </TableContainer>
+
+      <GetBurgerSchedule />
     </>
   );
 };

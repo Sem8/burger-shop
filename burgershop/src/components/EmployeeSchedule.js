@@ -75,23 +75,17 @@ const EmployeeSchedule = (props) => {
       </Card> */}
       {props.eachUser.id}
       <Card className={classes.card}>
-      <CardContent>
-      <Typography component="p">Monday</Typography>
-      <Typography component="p">Tuesday</Typography>
-      {eachUserSched.map((oneUserSched) => (
-        <div>
-          {oneUserSched.workDays.includes("monday") ? (
-                  
-                  
-                    
-                    <Typography component="p">{props.eachUser.name}</Typography>
-                  
-
-                
-          ) : null}
-        </div>
-      ))}
-      </CardContent>
+        <CardContent>
+          <Typography component="p">Monday</Typography>
+          <Typography component="p">Tuesday</Typography>
+          {eachUserSched.map((oneUserSched) => (
+            <div>
+              {oneUserSched.workDays.includes("monday") ? (
+                <Typography component="p">{props.eachUser.name}</Typography>
+              ) : null}
+            </div>
+          ))}
+        </CardContent>
       </Card>
     </>
   );

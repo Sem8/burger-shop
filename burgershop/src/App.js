@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Link, Switch } from "react-router-dom";
 
 import HomePage from './components/HomePage';
-import ManageBurger from './components/ManageBurger';
+import GetBurgerSchedule from './components/GetBurgerSchedule';
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
       </nav>
       <Switch>
         <Route path={"/"} exact component={HomePage} />
-        <Route path={"/manageBurger"} exact component={ManageBurger} />
+        <Route path={"/manageBurger"} exact component={GetBurgerSchedule} />
       </Switch>
     </>
   );
