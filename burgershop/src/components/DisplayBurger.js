@@ -214,7 +214,7 @@ const DisplayBurger = (props) => {
         gutterBottom
         style={{ padding: "3px", fontSize: "16px" }}
       >
-        *Note: Burger names below can be edited directly to change names for this week
+        *Note: Burger names below can be edited directly in the fields below
       </Typography>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
