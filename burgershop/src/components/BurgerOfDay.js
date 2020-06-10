@@ -1,48 +1,39 @@
-import React, { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
+import React from "react";
 
-import {
-  withStyles,
-  Typography,
-  TextField,
-  Button,
-  CardContent,
-  Menu,
-  MenuItem,
-  Container,
-  CssBaseline,
-  AppBar,
-  Toolbar,
-} from "@material-ui/core";
-import axios from "axios";
+import { Typography } from "@material-ui/core";
 
 const BurgerOfDay = (props) => {
+  return (
+    <>
+      <Typography
+        variant="h2"
+        style={{
+          padding: "20px",
+          margin: "30px",
+          textAlign: "center",
+          background: "linear-gradient(45deg, #dd7230 30%, #f4c95d 90%)",
+          boxShadow: "0 3px 5px 2px rgba(33, 203, 243, .3)",
+          borderRadius: 10,
+        }}
+      >
+        Today's Burger Of The Day!
+      </Typography>
+      <Typography
+        variant="h3"
+        style={{
+          width: "500px",
+          padding: "80px",
+          margin: "50px auto",
+          textAlign: "center",
+          fontWeight: "bold",
+          background: "linear-gradient(45deg, #854d27 30%, #e7e393 90%)",
+          borderRadius: 10,
+        }}
+      >
+        {props.burgerOfDay}
+      </Typography>
+    </>
+  );
+};
 
-    // console.log('props.weekSchedule', props.weekSchedule)
-    // let todaysDate = new Date();
-    // let allDays = ["sunday","monday","tuesday","wednesday","thursday","friday","saturday"];
-    // let todaysDay = allDays[todaysDate.getDay()];
-    // // console.log('todaysDay: ', todaysDay);
-    // // let burgerOfDay = props.weekSchedule.todaysDay
-    // console.log('props.weekSchedule.todaysDay: ', props.weekSchedule[`${todaysDay}`])
-
-    return (
-        <>
-        <Typography>
-            Today's Burger Of The Day!
-        </Typography>
-    <Typography>{props.burgerOfDay}</Typography>
-            
-        </>
-    )
-}
-
-export default BurgerOfDay
+export default BurgerOfDay;

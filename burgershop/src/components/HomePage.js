@@ -1,37 +1,27 @@
 import React, { useEffect, useState } from "react";
-// import EmployeeSchedule from "./EmployeeSchedule";
-// import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
 import {
-  withStyles,
+  Table,
   Typography,
-  TextField,
-  Button,
-  CardContent,
-  Menu,
-  MenuItem,
-  Container,
-  CssBaseline,
-  AppBar,
-  Toolbar,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
 } from "@material-ui/core";
-import Card from "@material-ui/core/Card";
 
 import axios from "axios";
 
-import BurgerOfDay from "./BurgerOfDay";
-import GetBurgerSchedule from './GetBurgerSchedule';
+import GetBurgerSchedule from "./GetBurgerSchedule";
+
+import "./styles/HomePage.css";
 
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
+    marginTop: "20px",
+    marginBottom: "20px",
   },
   marginRight: {
     marginRight: 10,
@@ -41,15 +31,18 @@ const useStyles = makeStyles({
     padding: 10,
     margin: 10,
     fontSize: 20,
-    border: '1px solid blue',
-    borderRadius: '50%',
-    backgroundColor: '#008BC9'
+    border: "1px solid blue",
+    borderRadius: "50px",
+    background: "linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)",
+    boxShadow: "0 3px 5px 2px rgba(33, 203, 243, .3)",
   },
   days: {
-    color: "#008BC9",
-    padding: 10,
+    color: "white",
+    background: "linear-gradient(45deg, #008BC9 30%, #21CBF3 90%)",
+    border: "2px solid 008BC9",
+    margin: 10,
     fontSize: 30,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
 });
 
@@ -138,22 +131,29 @@ const HomePage = () => {
 
   return (
     <>
-      <div>
-        Welcome to the Dashboard!
-        {/* <BurgerOfDay /> */}
-      </div>
-
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="center" className={classes.days} data-testid='monday'>
+              <TableCell
+                align="center"
+                className={classes.days}
+                data-testid="monday"
+              >
                 Monday
               </TableCell>
-              <TableCell align="center" className={classes.days} data-testid='tuesday'>
+              <TableCell
+                align="center"
+                className={classes.days}
+                data-testid="tuesday"
+              >
                 Tuesday
               </TableCell>
-              <TableCell align="center" className={classes.days} data-testid='wednesday'>
+              <TableCell
+                align="center"
+                className={classes.days}
+                data-testid="wednesday"
+              >
                 Wednesday
               </TableCell>
               <TableCell align="center" className={classes.days}>
@@ -172,9 +172,12 @@ const HomePage = () => {
           </TableHead>
           <TableBody>
             <TableRow>
-              <TableCell align="center">
+              <TableCell align="center" data-testid="weekWorkers">
                 {monday.map((eachMonName) => (
-                  <Typography key={Math.random() * 100000} className={classes.names}>
+                  <Typography
+                    key={Math.random() * 100000}
+                    className={classes.names}
+                  >
                     {eachMonName}
                   </Typography>
                 ))}
@@ -182,7 +185,10 @@ const HomePage = () => {
 
               <TableCell align="center">
                 {tuesday.map((eachTuesName) => (
-                  <Typography key={Math.random() * 100000} className={classes.names}>
+                  <Typography
+                    key={Math.random() * 100000}
+                    className={classes.names}
+                  >
                     {eachTuesName}
                   </Typography>
                 ))}
@@ -190,7 +196,11 @@ const HomePage = () => {
 
               <TableCell align="center">
                 {wednesday.map((eachWedName) => (
-                  <Typography key={Math.random() * 100000} className={classes.names}>
+                  <Typography
+                    key={Math.random() * 100000}
+                    className={classes.names}
+                    data-testid="wedWorkers"
+                  >
                     {eachWedName}
                   </Typography>
                 ))}
@@ -198,7 +208,11 @@ const HomePage = () => {
 
               <TableCell align="center">
                 {thursday.map((eachThursName) => (
-                  <Typography key={Math.random() * 100000} className={classes.names}>
+                  <Typography
+                    key={Math.random() * 100000}
+                    className={classes.names}
+                    data-testid="thursWorkers"
+                  >
                     {eachThursName}
                   </Typography>
                 ))}
@@ -206,7 +220,11 @@ const HomePage = () => {
 
               <TableCell align="center">
                 {friday.map((eachFriName) => (
-                  <Typography key={Math.random() * 100000} className={classes.names}>
+                  <Typography
+                    key={Math.random() * 100000}
+                    className={classes.names}
+                    data-testid="friWorkers"
+                  >
                     {eachFriName}
                   </Typography>
                 ))}
@@ -214,7 +232,11 @@ const HomePage = () => {
 
               <TableCell align="center">
                 {saturday.map((eachSatName) => (
-                  <Typography key={Math.random() * 100000} className={classes.names}>
+                  <Typography
+                    key={Math.random() * 100000}
+                    className={classes.names}
+                    data-testid="satWorkers"
+                  >
                     {eachSatName}
                   </Typography>
                 ))}
@@ -222,74 +244,16 @@ const HomePage = () => {
 
               <TableCell align="center">
                 {sunday.map((eachSunName) => (
-                  <Typography key={Math.random() * 100000} className={classes.names}>
+                  <Typography
+                    key={Math.random() * 100000}
+                    className={classes.names}
+                    data-testid="sunWorkers"
+                  >
                     {eachSunName}
                   </Typography>
                 ))}
               </TableCell>
             </TableRow>
-
-            {/* {scheduleData.map((eachSchedule) =>
-              userData.map((eachUser) => (
-                // return (
-                //   <div>
-                //     <EmployeeSchedule eachUser={eachUser} />
-                //   </div>
-                // );
-                <>
-                  <TableRow>
-                    <TableCell align="center">
-                      {eachUser.id === eachSchedule.userId &&
-                      eachSchedule.workDays.includes("monday") ? (
-                        <div>{eachUser.name}</div>
-                      ) : null}
-                    </TableCell>
-
-                    <TableCell align="center">
-                      {eachUser.id === eachSchedule.userId &&
-                      eachSchedule.workDays.includes("tuesday") ? (
-                        <div>{eachUser.name}</div>
-                      ) : null}
-                    </TableCell>
-
-                    <TableCell align="center">
-                      {eachUser.id === eachSchedule.userId &&
-                      eachSchedule.workDays.includes("wednesday") ? (
-                        <div>{eachUser.name}</div>
-                      ) : null}
-                    </TableCell>
-
-                    <TableCell align="center">
-                      {eachUser.id === eachSchedule.userId &&
-                      eachSchedule.workDays.includes("thursday") ? (
-                        <div>{eachUser.name}</div>
-                      ) : null}
-                    </TableCell>
-
-                    <TableCell align="center">
-                      {eachUser.id === eachSchedule.userId &&
-                      eachSchedule.workDays.includes("friday") ? (
-                        <div>{eachUser.name}</div>
-                      ) : null}
-                    </TableCell>
-
-                    <TableCell align="center">
-                      {eachUser.id === eachSchedule.userId &&
-                      eachSchedule.workDays.includes("saturday") ? (
-                        <div>{eachUser.name}</div>
-                      ) : null}
-                    </TableCell>
-
-                    <TableCell align="center">
-                      {eachUser.id === eachSchedule.userId &&
-                      eachSchedule.workDays.includes("sunday") ? (
-                        <div>{eachUser.name}</div>
-                      ) : null}
-                    </TableCell>
-                  </TableRow>
-                </>
-              ))
-            )} */}
           </TableBody>
         </Table>
       </TableContainer>

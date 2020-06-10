@@ -14,3 +14,11 @@ it('check if days of the week text displays', () => {
     expect(tuesText).toBeInTheDocument();
     expect(tuesText).toHaveTextContent("Tuesday");
   });
+
+  it('check if Employee names appear on the table', () => {
+    const { getByTestId } = render(<HomePage />);
+    const weekWorkers = getByTestId('weekWorkers');
+  
+    expect(weekWorkers).toBeInTheDocument();
+    expect(weekWorkers).toBeEmpty('');
+  });

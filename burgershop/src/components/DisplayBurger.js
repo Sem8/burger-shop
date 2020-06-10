@@ -1,32 +1,20 @@
 import React, { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
 
 import {
-  withStyles,
   Typography,
   TextField,
   Button,
-  CardContent,
-  Menu,
-  MenuItem,
-  Container,
-  CssBaseline,
-  AppBar,
-  Toolbar,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
 } from "@material-ui/core";
-import EditIcon from "@material-ui/icons/Edit";
 import AddIcon from "@material-ui/icons/Add";
 import DeleteIcon from "@material-ui/icons/Delete";
-import SaveIcon from "@material-ui/icons/Save";
-import axios from "axios";
 
 import BurgerOfDay from "./BurgerOfDay";
 
@@ -38,10 +26,28 @@ const useStyles = makeStyles({
     marginRight: 10,
   },
   days: {
-    color: "#008BC9",
+    background: "linear-gradient(45deg, #dd7230 30%, #f4c95d 90%)",
     padding: 10,
     fontSize: 30,
     fontWeight: "bold",
+  },
+  button: {
+    margin: "10px",
+    background: "linear-gradient(45deg, #dd7230 30%, #f4c95d 90%)",
+  },
+  text: {
+    background: "linear-gradient(45deg, #dd7230 30%, #f4c95d 90%)",
+    padding: "20px",
+    margin: "30px",
+    textAlign: "center",
+    borderRadius: 10,
+  },
+  burgerNames: {
+    background: "linear-gradient(45deg, #854d27 30%, #e7e393 90%)",
+    padding: "20px",
+    margin: "15px",
+    borderRadius: 10,
+    textAlign: "center",
   },
 });
 
@@ -58,7 +64,6 @@ const DisplayBurger = (props) => {
     sunday: "",
   };
   const [burgerSchedule, setBurgerSchedule] = useState(weekSchedule);
-  // const [burgerOfDay, setBurgerOfDay] = useState('');
 
   let generateBurger = () => {
     if (props.burgerDataCopy.length) {
@@ -93,58 +98,6 @@ const DisplayBurger = (props) => {
             Math.floor(Math.random() * props.burgerDataCopy.length)
           ]["name"],
       }));
-
-      // weekSchedule = {
-      //   ...weekSchedule,
-      //   monday:
-      //     props.burgerDataCopy[
-      //       Math.floor(Math.random() * props.burgerDataCopy.length)
-      //     ]["name"],
-      // };
-
-      // weekSchedule = {
-      //   ...weekSchedule,
-      //   tuesday:
-      //     props.burgerDataCopy[
-      //       Math.floor(Math.random() * props.burgerDataCopy.length)
-      //     ]["name"],
-      // };
-      // weekSchedule = {
-      //   ...weekSchedule,
-      //   wednesday:
-      //     props.burgerDataCopy[
-      //       Math.floor(Math.random() * props.burgerDataCopy.length)
-      //     ]["name"],
-      // };
-      // weekSchedule = {
-      //   ...weekSchedule,
-      //   thursday:
-      //     props.burgerDataCopy[
-      //       Math.floor(Math.random() * props.burgerDataCopy.length)
-      //     ]["name"],
-      // };
-
-      // weekSchedule = {
-      //   ...weekSchedule,
-      //   friday:
-      //     props.burgerDataCopy[
-      //       Math.floor(Math.random() * props.burgerDataCopy.length)
-      //     ]["name"],
-      // };
-      // weekSchedule = {
-      //   ...weekSchedule,
-      //   saturday:
-      //     props.burgerDataCopy[
-      //       Math.floor(Math.random() * props.burgerDataCopy.length)
-      //     ]["name"],
-      // };
-      // weekSchedule = {
-      //   ...weekSchedule,
-      //   sunday:
-      //     props.burgerDataCopy[
-      //       Math.floor(Math.random() * props.burgerDataCopy.length)
-      //     ]["name"],
-      // };
     }
   };
 
@@ -184,7 +137,6 @@ const DisplayBurger = (props) => {
       <BurgerOfDay burgerOfDay={burgerOfDay} />
       <Button
         variant="contained"
-        color="primary"
         size="large"
         className={classes.button}
         startIcon={<AddIcon />}
@@ -194,7 +146,6 @@ const DisplayBurger = (props) => {
       </Button>
       <Button
         variant="contained"
-        color="primary"
         size="large"
         className={classes.button}
         startIcon={<DeleteIcon />}
@@ -202,11 +153,7 @@ const DisplayBurger = (props) => {
       >
         Clear Burgers
       </Button>
-      <Typography
-        variant="body2"
-        gutterBottom
-        style={{ padding: "3px", fontSize: "32px" }}
-      >
+      <Typography variant="h3" gutterBottom className={classes.text}>
         Burgers this week!
       </Typography>
       <Typography
@@ -258,6 +205,7 @@ const DisplayBurger = (props) => {
                   rows={4}
                   rowsMax={4}
                   onChange={handleChange}
+                  className={classes.burgerNames}
                 />{" "}
               </TableCell>
 
@@ -274,6 +222,7 @@ const DisplayBurger = (props) => {
                   rows={4}
                   rowsMax={4}
                   onChange={handleChange}
+                  className={classes.burgerNames}
                 />{" "}
               </TableCell>
 
@@ -290,6 +239,7 @@ const DisplayBurger = (props) => {
                   rows={4}
                   rowsMax={4}
                   onChange={handleChange}
+                  className={classes.burgerNames}
                 />{" "}
               </TableCell>
 
@@ -306,6 +256,7 @@ const DisplayBurger = (props) => {
                   rows={4}
                   rowsMax={4}
                   onChange={handleChange}
+                  className={classes.burgerNames}
                 />{" "}
               </TableCell>
 
@@ -322,6 +273,7 @@ const DisplayBurger = (props) => {
                   rows={4}
                   rowsMax={4}
                   onChange={handleChange}
+                  className={classes.burgerNames}
                 />{" "}
               </TableCell>
 
@@ -338,6 +290,7 @@ const DisplayBurger = (props) => {
                   rows={4}
                   rowsMax={4}
                   onChange={handleChange}
+                  className={classes.burgerNames}
                 />{" "}
               </TableCell>
 
@@ -354,6 +307,7 @@ const DisplayBurger = (props) => {
                   rows={4}
                   rowsMax={4}
                   onChange={handleChange}
+                  className={classes.burgerNames}
                 />{" "}
               </TableCell>
             </TableRow>
