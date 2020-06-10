@@ -140,7 +140,7 @@ const HomePage = () => {
     <>
       <div>
         Welcome to the Dashboard!
-        <BurgerOfDay />
+        {/* <BurgerOfDay /> */}
       </div>
 
       <TableContainer component={Paper}>

@@ -22,6 +22,10 @@ import {
   AppBar,
   Toolbar,
 } from "@material-ui/core";
+import EditIcon from "@material-ui/icons/Edit";
+import AddIcon from "@material-ui/icons/Add";
+import DeleteIcon from "@material-ui/icons/Delete";
+import SaveIcon from "@material-ui/icons/Save";
 import axios from "axios";
 
 import BurgerOfDay from "./BurgerOfDay";
@@ -53,103 +57,165 @@ const DisplayBurger = (props) => {
     saturday: "",
     sunday: "",
   };
-  const [burgerSchedule, setBurgerSchedule] = useState({});
+  const [burgerSchedule, setBurgerSchedule] = useState(weekSchedule);
   // const [burgerOfDay, setBurgerOfDay] = useState('');
 
-  if (props.burgerDataCopy.length) {
-    // setBurgerSchedule({
-    //   monday:
-    //     props.burgerDataCopy[
-    //       Math.floor(Math.random() * props.burgerDataCopy.length)
-    //     ]["name"],
-    //   tuesday:
-    //     props.burgerDataCopy[
-    //       Math.floor(Math.random() * props.burgerDataCopy.length)
-    //     ]["name"],
-    //   wednesday:
-    //     props.burgerDataCopy[
-    //       Math.floor(Math.random() * props.burgerDataCopy.length)
-    //     ]["name"],
-    //   thursday:
-    //     props.burgerDataCopy[
-    //       Math.floor(Math.random() * props.burgerDataCopy.length)
-    //     ]["name"],
-    //   friday:
-    //     props.burgerDataCopy[
-    //       Math.floor(Math.random() * props.burgerDataCopy.length)
-    //     ]["name"],
-    //   saturday:
-    //     props.burgerDataCopy[
-    //       Math.floor(Math.random() * props.burgerDataCopy.length)
-    //     ]["name"],
-    //   sunday:
-    //     props.burgerDataCopy[
-    //       Math.floor(Math.random() * props.burgerDataCopy.length)
-    //     ]["name"],
-    // });
+  let generateBurger = () => {
+    if (props.burgerDataCopy.length) {
+      setBurgerSchedule((burgerSchedule) => ({
+        ...burgerSchedule,
+        monday:
+          props.burgerDataCopy[
+            Math.floor(Math.random() * props.burgerDataCopy.length)
+          ]["name"],
+        tuesday:
+          props.burgerDataCopy[
+            Math.floor(Math.random() * props.burgerDataCopy.length)
+          ]["name"],
+        wednesday:
+          props.burgerDataCopy[
+            Math.floor(Math.random() * props.burgerDataCopy.length)
+          ]["name"],
+        thursday:
+          props.burgerDataCopy[
+            Math.floor(Math.random() * props.burgerDataCopy.length)
+          ]["name"],
+        friday:
+          props.burgerDataCopy[
+            Math.floor(Math.random() * props.burgerDataCopy.length)
+          ]["name"],
+        saturday:
+          props.burgerDataCopy[
+            Math.floor(Math.random() * props.burgerDataCopy.length)
+          ]["name"],
+        sunday:
+          props.burgerDataCopy[
+            Math.floor(Math.random() * props.burgerDataCopy.length)
+          ]["name"],
+      }));
 
-    weekSchedule = {
-      ...weekSchedule,
-      monday:
-        props.burgerDataCopy[
-          Math.floor(Math.random() * props.burgerDataCopy.length)
-        ]["name"],
-    };
+      // weekSchedule = {
+      //   ...weekSchedule,
+      //   monday:
+      //     props.burgerDataCopy[
+      //       Math.floor(Math.random() * props.burgerDataCopy.length)
+      //     ]["name"],
+      // };
 
-    weekSchedule = {
-      ...weekSchedule,
-      tuesday:
-        props.burgerDataCopy[
-          Math.floor(Math.random() * props.burgerDataCopy.length)
-        ]["name"],
-    };
-    weekSchedule = {
-      ...weekSchedule,
-      wednesday:
-        props.burgerDataCopy[
-          Math.floor(Math.random() * props.burgerDataCopy.length)
-        ]["name"],
-    };
-    weekSchedule = {
-      ...weekSchedule,
-      thursday:
-        props.burgerDataCopy[
-          Math.floor(Math.random() * props.burgerDataCopy.length)
-        ]["name"],
-    };
+      // weekSchedule = {
+      //   ...weekSchedule,
+      //   tuesday:
+      //     props.burgerDataCopy[
+      //       Math.floor(Math.random() * props.burgerDataCopy.length)
+      //     ]["name"],
+      // };
+      // weekSchedule = {
+      //   ...weekSchedule,
+      //   wednesday:
+      //     props.burgerDataCopy[
+      //       Math.floor(Math.random() * props.burgerDataCopy.length)
+      //     ]["name"],
+      // };
+      // weekSchedule = {
+      //   ...weekSchedule,
+      //   thursday:
+      //     props.burgerDataCopy[
+      //       Math.floor(Math.random() * props.burgerDataCopy.length)
+      //     ]["name"],
+      // };
 
-    weekSchedule = {
-      ...weekSchedule,
-      friday:
-        props.burgerDataCopy[
-          Math.floor(Math.random() * props.burgerDataCopy.length)
-        ]["name"],
-    };
-    weekSchedule = {
-      ...weekSchedule,
-      saturday:
-        props.burgerDataCopy[
-          Math.floor(Math.random() * props.burgerDataCopy.length)
-        ]["name"],
-    };
-    weekSchedule = {
-      ...weekSchedule,
-      sunday:
-        props.burgerDataCopy[
-          Math.floor(Math.random() * props.burgerDataCopy.length)
-        ]["name"],
-    };    
-  }    
+      // weekSchedule = {
+      //   ...weekSchedule,
+      //   friday:
+      //     props.burgerDataCopy[
+      //       Math.floor(Math.random() * props.burgerDataCopy.length)
+      //     ]["name"],
+      // };
+      // weekSchedule = {
+      //   ...weekSchedule,
+      //   saturday:
+      //     props.burgerDataCopy[
+      //       Math.floor(Math.random() * props.burgerDataCopy.length)
+      //     ]["name"],
+      // };
+      // weekSchedule = {
+      //   ...weekSchedule,
+      //   sunday:
+      //     props.burgerDataCopy[
+      //       Math.floor(Math.random() * props.burgerDataCopy.length)
+      //     ]["name"],
+      // };
+    }
+  };
 
   let todaysDate = new Date();
-  let allDays = ["sunday","monday","tuesday","wednesday","thursday","friday","saturday"];
+  let allDays = [
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+  ];
   let todaysDay = allDays[todaysDate.getDay()];
-  let burgerOfDay = weekSchedule[`${todaysDay}`];
+  let burgerOfDay = burgerSchedule[`${todaysDay}`];
+
+  const handleChange = (event) => {
+    event.persist();
+    setBurgerSchedule((burgerSchedule) => ({
+      ...burgerSchedule,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  const deleteBurger = (event) => {
+    event.persist();
+    setBurgerSchedule(weekSchedule);
+  };
+
+  const handleBurgerSubmit = (event) => {
+    event.persist();
+    setBurgerSchedule(burgerSchedule);
+  };
 
   return (
     <>
-    <BurgerOfDay burgerOfDay={burgerOfDay} />
-    <Typography>Burgers this week</Typography>
+      <BurgerOfDay burgerOfDay={burgerOfDay} />
+      <Button
+        variant="contained"
+        color="primary"
+        size="large"
+        className={classes.button}
+        startIcon={<AddIcon />}
+        onClick={generateBurger}
+      >
+        Get Burgers for this week
+      </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        size="large"
+        className={classes.button}
+        startIcon={<DeleteIcon />}
+        onClick={(e) => deleteBurger(e, "monday")}
+      >
+        Clear All
+      </Button>
+      <Typography
+        variant="body2"
+        gutterBottom
+        style={{ padding: "3px", fontSize: "32px" }}
+      >
+        Burgers this week!
+      </Typography>
+      <Typography
+        variant="body2"
+        gutterBottom
+        style={{ padding: "3px", fontSize: "16px" }}
+      >
+        *Note: Burger names below can be edited directly to change names for this week
+      </Typography>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
@@ -180,38 +246,120 @@ const DisplayBurger = (props) => {
           <TableBody>
             <TableRow>
               <TableCell align="center">
-                <Typography>{weekSchedule.monday}</Typography>
+                <TextField
+                  id="outlined-input"
+                  name="monday"
+                  value={burgerSchedule.monday}
+                  type="text"
+                  variant="outlined"
+                  style={{ width: "250px" }}
+                  margin="normal"
+                  multiline={true}
+                  rows={4}
+                  rowsMax={4}
+                  onChange={handleChange}
+                />{" "}
               </TableCell>
 
               <TableCell align="center">
-                <Typography>{weekSchedule.tuesday}</Typography>
+                <TextField
+                  id="outlined-input"
+                  name="tuesday"
+                  value={burgerSchedule.tuesday}
+                  type="text"
+                  variant="outlined"
+                  style={{ width: "250px" }}
+                  margin="normal"
+                  multiline={true}
+                  rows={4}
+                  rowsMax={4}
+                  onChange={handleChange}
+                />{" "}
               </TableCell>
 
               <TableCell align="center">
-                <Typography>{weekSchedule.wednesday}</Typography>
+                <TextField
+                  id="outlined-input"
+                  name="wednesday"
+                  value={burgerSchedule.wednesday}
+                  type="text"
+                  variant="outlined"
+                  style={{ width: "250px" }}
+                  margin="normal"
+                  multiline={true}
+                  rows={4}
+                  rowsMax={4}
+                  onChange={handleChange}
+                />{" "}
               </TableCell>
 
               <TableCell align="center">
-                <Typography>{weekSchedule.thursday}</Typography>
+                <TextField
+                  id="outlined-input"
+                  name="thursday"
+                  value={burgerSchedule.thursday}
+                  type="text"
+                  variant="outlined"
+                  style={{ width: "250px" }}
+                  margin="normal"
+                  multiline={true}
+                  rows={4}
+                  rowsMax={4}
+                  onChange={handleChange}
+                />{" "}
               </TableCell>
 
               <TableCell align="center">
-                <Typography>{weekSchedule.friday}</Typography>
+                <TextField
+                  id="outlined-input"
+                  name="friday"
+                  value={burgerSchedule.friday}
+                  type="text"
+                  variant="outlined"
+                  style={{ width: "250px" }}
+                  margin="normal"
+                  multiline={true}
+                  rows={4}
+                  rowsMax={4}
+                  onChange={handleChange}
+                />{" "}
               </TableCell>
 
               <TableCell align="center">
-                <Typography>{weekSchedule.saturday}</Typography>
+                <TextField
+                  id="outlined-input"
+                  name="saturday"
+                  value={burgerSchedule.saturday}
+                  type="text"
+                  variant="outlined"
+                  style={{ width: "250px" }}
+                  margin="normal"
+                  multiline={true}
+                  rows={4}
+                  rowsMax={4}
+                  onChange={handleChange}
+                />{" "}
               </TableCell>
 
               <TableCell align="center">
-                <Typography>{weekSchedule.sunday}</Typography>
+                <TextField
+                  id="outlined-input"
+                  name="sunday"
+                  value={burgerSchedule.sunday}
+                  type="text"
+                  variant="outlined"
+                  style={{ width: "250px" }}
+                  margin="normal"
+                  multiline={true}
+                  rows={4}
+                  rowsMax={4}
+                  onChange={handleChange}
+                />{" "}
               </TableCell>
             </TableRow>
           </TableBody>
         </Table>
       </TableContainer>
-
-      
     </>
   );
 };

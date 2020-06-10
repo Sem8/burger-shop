@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <div>
-        <p>Restaurant Management App!</p>
+        <p>Bob's Restaurant</p>
       </div>
 
       <nav>
