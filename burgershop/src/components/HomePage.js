@@ -147,13 +147,13 @@ const HomePage = () => {
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="center" className={classes.days}>
+              <TableCell align="center" className={classes.days} data-testid='monday'>
                 Monday
               </TableCell>
-              <TableCell align="center" className={classes.days}>
+              <TableCell align="center" className={classes.days} data-testid='tuesday'>
                 Tuesday
               </TableCell>
-              <TableCell align="center" className={classes.days}>
+              <TableCell align="center" className={classes.days} data-testid='wednesday'>
                 Wednesday
               </TableCell>
               <TableCell align="center" className={classes.days}>

@@ -200,7 +200,7 @@ const DisplayBurger = (props) => {
         startIcon={<DeleteIcon />}
         onClick={(e) => deleteBurger(e, "monday")}
       >
-        Clear All
+        Clear Burgers
       </Button>
       <Typography
         variant="body2"
