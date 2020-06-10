@@ -83,12 +83,9 @@ const GetBurgerSchedule = () => {
 
   return (
     <>
-      <Typography>Burgers of every day</Typography>
-      
-
       {burgerData.map((eachBurger) => {
         burgerDataCopy.push(eachBurger);
-      })}
+      })}      
       <DisplayBurger burgerDataCopy={burgerDataCopy} />
     </>
   );

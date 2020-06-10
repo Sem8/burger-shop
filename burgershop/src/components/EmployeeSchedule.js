@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+import {
+  RouteComponentProps,
+  withRouter,
+  useHistory,
+  useParams,
+  Link,
+  Route,
+  Switch,
+} from "react-router-dom";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -14,100 +22,91 @@ import {
   TextField,
   Button,
   CardContent,
+  Card,
   Menu,
   MenuItem,
   Container,
   CssBaseline,
-  AppBar,
+  CardActionArea,
   Toolbar,
 } from "@material-ui/core";
-import Card from "@material-ui/core/Card";
+import SaveIcon from "@material-ui/icons/Save";
+import EditIcon from "@material-ui/icons/Edit";
 
 import axios from "axios";
 
-const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
-  },
-  marginRight: {
-    marginRight: 10,
-  },
-});
+import UpdateEmployeeSchedule from "./UpdateEmployeeSchedule";
+
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    root: {
+      "& .MuiTextField-root": {
+        margin: theme.spacing(1),
+        width: 200,
+        display: "block",
+      },
+    },
+    wrapper: {
+      width: "100%",
+    },
+    formInput: {
+      width: "100%",
+    },
+    button: {
+      margin: theme.spacing(1),
+    },
+  })
+);
 
 const EmployeeSchedule = (props) => {
-  const classes = useStyles();
+  const { schedId } = useParams();
 
-  //   const [userData, setUserData] = useState([]);
+  const classes = useStyles();
+  const history = useHistory();
+
   const [eachUserSched, setEachUserSched] = useState([]);
 
   useEffect(() => {
-    // getUserData();
     getEachUserSched();
   }, []);
-
-  //   const getUserData = async () => {
-  //     let userData = await axios.get(`http://localhost:3001/users`);
-  //     console.log("User data: ", userData.data);
-  //     setUserData(userData.data);
-  //   };
 
   let getEachUserSched = async () => {
     let userSched = await axios.get(
       `http://localhost:3001/users/${props.eachUser.id}/schedule`
     );
-
-    console.log("user sched data: ", userSched.data);
+    // console.log("user sched data userSched.data: ", userSched.data);
     setEachUserSched(userSched.data);
   };
-
-  //   console.log('eachUserSched[0]: ', eachUserSched[0].id);
+  //   console.log("each user sched eachUserSched: ", eachUserSched);
 
   return (
     <>
-      {/* <Card className={classes.card}>
-        <CardContent>
-          <Typography component="p">Monday</Typography>
-        </CardContent>
-
-        <CardContent>
-          <Typography component="p">Tuesday</Typography>
-        </CardContent>
-      </Card> */}
-      {props.eachUser.id}
-      <Card className={classes.card}>
-        <CardContent>
-          <Typography component="p">Monday</Typography>
-          <Typography component="p">Tuesday</Typography>
-          {eachUserSched.map((oneUserSched) => (
-            <div>
-              {oneUserSched.workDays.includes("monday") ? (
-                <Typography component="p">{props.eachUser.name}</Typography>
-              ) : null}
+      {eachUserSched.map((singleSchedule) => (
+        <div key={singleSchedule.id}>
+          <Link to={`/manageEmpSched/${singleSchedule.id}`}>
+            <EditIcon className={classes.marginRight} />
+          </Link>
+          {singleSchedule.workDays.map((eachWorkDay) => (
+            <div key={Math.random() * 10000}>
+              <Typography>{eachWorkDay}</Typography>
             </div>
           ))}
-        </CardContent>
-      </Card>
+          {/* <Switch>
+            <Route
+              path={"/manageEmpSched/:schedId"}
+              render={(props) => (
+                <UpdateEmployeeSchedule
+                  {...props}
+                  singleSchedule={singleSchedule}
+                />
+              )}
+              // component={() => <EmployeeSchedule eachUser={eachUser} />}
+            />
+          </Switch> */}
+        </div>
+      ))}
     </>
   );
 };
 
 export default EmployeeSchedule;
-
-/*             <TableRow key={eachUser.id}>
-              <TableCell component="th" scope="row">
-                {eachUser.name}  
-                {eachUser.id === props.eachSchedule.userId &&
-                    props.eachSchedule.workDays.includes("monday")
-                      ? eachUser.name
-                      : ""}
-                  </TableCell>
-                  <TableCell align="right">{eachUser.email}</TableCell>
-                  <TableCell align="right">{eachUser.phone}</TableCell>
-                  <TableCell align="right">{eachUser.address}</TableCell>
-                  <TableCell align="right">{eachUser.description}</TableCell>
-                  <TableCell align="right">
-                    <Link to={`edit/${eachUser.id}`}> <EditIcon className={classes.marginRight} /> </Link>
-                                   <DeleteIcon onClick={e => deleteCustomer(e, customer.id)} /> 
-                  </TableCell>
-                </TableRow> 
-                */

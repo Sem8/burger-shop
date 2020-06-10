@@ -138,19 +138,18 @@ const DisplayBurger = (props) => {
         props.burgerDataCopy[
           Math.floor(Math.random() * props.burgerDataCopy.length)
         ]["name"],
-    };
+    };    
   }    
 
   let todaysDate = new Date();
   let allDays = ["sunday","monday","tuesday","wednesday","thursday","friday","saturday"];
   let todaysDay = allDays[todaysDate.getDay()];
-  // console.log('todaysDay: ', todaysDay);
   let burgerOfDay = weekSchedule[`${todaysDay}`];
-  // setBurgerOfDay(weekSchedule[`${todaysDay}`]);
-  // console.log('weekSchedule.todaysDay: ', weekSchedule[`${todaysDay}`])
 
   return (
     <>
+    <BurgerOfDay burgerOfDay={burgerOfDay} />
+    <Typography>Burgers this week</Typography>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
@@ -212,7 +211,7 @@ const DisplayBurger = (props) => {
         </Table>
       </TableContainer>
 
-      <BurgerOfDay burgerOfDay={burgerOfDay} />
+      
     </>
   );
 };
